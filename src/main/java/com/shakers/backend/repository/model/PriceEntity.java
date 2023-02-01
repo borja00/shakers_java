@@ -25,6 +25,8 @@ public class PriceEntity {
     // We are storing dates in UTC time and without Timezone
     LocalDateTime startDate;
     LocalDateTime endDate;
+
+    // TODO: Ask if this field is a LIST or not
     Integer priceRateId;
     Integer productId;
     Integer priority;

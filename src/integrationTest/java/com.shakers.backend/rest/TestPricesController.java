@@ -22,7 +22,7 @@ public class TestPricesController {
 
     @ParameterizedTest
     @MethodSource("provideDifferentDates")
-    void should_get_product_prices(LocalDate date, LocalTime time, String expectedPrice) {
+    void should_get_product_prices(LocalDate date, LocalTime time, String expectedPrice, Integer expectedRate) {
 
         String brandId = "1";
         String productId = "35455";
@@ -39,7 +39,7 @@ public class TestPricesController {
                 .expectBody()
                 .jsonPath("$.brandId").isEqualTo(brandId)
                 .jsonPath("$.productId").isEqualTo(productId)
-                .jsonPath("$.rateId").isNotEmpty()
+                .jsonPath("$.rateId").isEqualTo(expectedRate)
                 .jsonPath("$.priceValid.from").isNotEmpty()
                 .jsonPath("$.priceValid.until").isNotEmpty()
 
@@ -50,11 +50,11 @@ public class TestPricesController {
     @DataProvider
     static Object [][] provideDifferentDates() {
         return new Object[][]{
-                {LocalDate.of(2020, 6,14), LocalTime.of(10, 0), "35.50"},
-                {LocalDate.of(2020, 6,14), LocalTime.of(16, 0), "25.45"},
-                {LocalDate.of(2020, 6,14), LocalTime.of(21, 0), "35.50"},
-                {LocalDate.of(2020, 6,15), LocalTime.of(10, 0), "30.50"},
-                {LocalDate.of(2020, 6,16), LocalTime.of(21, 0), "38.95"},
+                {LocalDate.of(2020, 6,14), LocalTime.of(10, 0), "35.50", 1},
+                {LocalDate.of(2020, 6,14), LocalTime.of(16, 0), "25.45", 2},
+                {LocalDate.of(2020, 6,14), LocalTime.of(21, 0), "35.50", 1},
+                {LocalDate.of(2020, 6,15), LocalTime.of(10, 0), "30.50", 3},
+                {LocalDate.of(2020, 6,16), LocalTime.of(21, 0), "38.95", 4},
 
         };
 
