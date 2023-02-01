@@ -12,8 +12,7 @@ public class PriceDTOBuilder {
                 .productId(price.getProductId())
                 .price(MoneyDTOBuilder.buildFrom(price.getPrice()))
                 .rateId(price.getPriceRateId())
-                .priceValidFrom(price.getStartDate())
-                .priceValidUntil(price.getEndDate())
+                .priceValid(PriceValidDTOBuilder.buildFrom(price))
                 .build();
     }
 }

@@ -19,9 +19,8 @@ public class PriceDTO {
 
     MoneyDTO price;
 
-    Instant priceValidFrom;
+    PriceValidDTO priceValid;
 
-    Instant priceValidUntil;
 
 
 }

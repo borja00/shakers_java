@@ -41,6 +41,9 @@ public class TestPricesController {
                 .jsonPath("$.brandId").isEqualTo(brandId)
                 .jsonPath("$.productId").isEqualTo(productId)
                 .jsonPath("$.rateId").isNotEmpty()
+                .jsonPath("$.priceValid.from").isNotEmpty()
+                .jsonPath("$.priceValid.until").isNotEmpty()
+
                 .jsonPath("$.price.amount").isEqualTo(expectedPrice)
                 .jsonPath("$.price.currency").isEqualTo("EUR");
 
