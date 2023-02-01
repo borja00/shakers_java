@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Comparator;
@@ -26,7 +27,7 @@ public class ProductsService {
         this.pricesRepository = pricesRepository;
     }
 
-    public Mono<Price> findPriceForProduct(Integer brandId, Integer productId, @NotNull LocalDateTime time) {
+    public Mono<Price> findPriceForProduct(@NotNull Integer brandId, @NotNull Integer productId, @NotNull Instant time) {
 
         return Flux.fromIterable(pricesRepository.findByBrandIdAndProductId(brandId, productId))
                 .map(PriceEntityBuilder::buildFrom)

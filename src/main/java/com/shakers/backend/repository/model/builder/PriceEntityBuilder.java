@@ -5,6 +5,7 @@ import com.shakers.backend.repository.model.PriceEntity;
 import org.javamoney.moneta.Money;
 
 import javax.money.Monetary;
+import java.time.ZoneOffset;
 
 
 public class PriceEntityBuilder {
@@ -16,8 +17,8 @@ public class PriceEntityBuilder {
 
         return Price.builder()
                 .brandId(entity.getBrandId())
-                .startDate(entity.getStartDate())
-                .endDate(entity.getEndDate())
+                .startDate(entity.getStartDate().toInstant(ZoneOffset.UTC))
+                .endDate(entity.getEndDate().toInstant(ZoneOffset.UTC))
                 .priceRateId(entity.getPriceRateId())
                 .productId(entity.getProductId())
                 .priority(entity.getPriority())

@@ -5,8 +5,6 @@ import lombok.Data;
 import org.javamoney.moneta.Money;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
-
 
 @Builder
 @Data
@@ -14,8 +12,8 @@ import java.time.LocalDateTime;
 public class Price {
 
     Integer brandId;
-    LocalDateTime startDate;
-    LocalDateTime endDate;
+    Instant startDate;
+    Instant endDate;
     Integer priceRateId;
     Integer productId;
     Integer priority;

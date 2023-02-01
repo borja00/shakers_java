@@ -3,6 +3,7 @@ package com.shakers.backend.rest.model;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Builder
@@ -18,9 +19,9 @@ public class PriceDTO {
 
     MoneyDTO price;
 
-    LocalDateTime priceValidFrom;
+    Instant priceValidFrom;
 
-    LocalDateTime priceValidUntil;
+    Instant priceValidUntil;
 
 
 }

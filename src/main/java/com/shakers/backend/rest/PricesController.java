@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.*;
 
 @RestController
 public class PricesController {
@@ -27,15 +26,22 @@ public class PricesController {
             @PathVariable Integer brandId,
             @PathVariable Integer productId,
             @RequestParam(value = "date", required = false) LocalDate date,
-            @RequestParam(value = "time", required = false) LocalTime time
+            @RequestParam(value = "time", required = false) LocalTime time,
+            @RequestParam(value = "timezone", required = false) ZoneId zoneId
             ) {
         if (date == null) {
             date = LocalDate.now();
         }
+
         if (time == null) {
             time = LocalTime.now();
         }
-        return productsService.findPriceForProduct(brandId, productId, date.atTime(time))
+
+        if(zoneId == null) {
+            zoneId= ZoneOffset.UTC;
+        }
+
+        return productsService.findPriceForProduct(brandId, productId, LocalDateTime.of(date, time).atZone(zoneId).toInstant())
                 .map(PriceDTOBuilder::buildFrom)
                 .switchIfEmpty(Mono.error(new ResourceNotFoundException()));
     }
