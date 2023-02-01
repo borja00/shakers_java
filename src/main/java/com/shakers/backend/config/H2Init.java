@@ -49,8 +49,8 @@ public class H2Init {
     private PriceEntity buildPrice(String startDate, String endDate, Integer priceRateId, Integer priority, Integer price) {
         return                PriceEntity.builder()
                         .brandId(1)
-                        .startDate(LocalDateTime.parse(startDate, dateTimeFormatter).toInstant(ZoneOffset.UTC))
-                        .endDate(LocalDateTime.parse(endDate, dateTimeFormatter).toInstant(ZoneOffset.UTC))
+                        .startDate(LocalDateTime.parse(startDate, dateTimeFormatter))
+                        .endDate(LocalDateTime.parse(endDate, dateTimeFormatter))
                         .priceRateId(priceRateId)
                         .productId(35455)
                         .priority(priority)

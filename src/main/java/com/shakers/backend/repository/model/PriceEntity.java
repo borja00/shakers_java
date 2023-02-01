@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -23,9 +22,9 @@ public class PriceEntity {
     @GeneratedValue(strategy = IDENTITY)
     Integer id;
     Integer brandId;
-    // We are storing dates in UTC time
-    Instant startDate;
-    Instant endDate;
+    // We are storing dates in UTC time and without Timezone
+    LocalDateTime startDate;
+    LocalDateTime endDate;
     Integer priceRateId;
     Integer productId;
     Integer priority;

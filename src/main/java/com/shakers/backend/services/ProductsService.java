@@ -30,9 +30,9 @@ public class ProductsService {
 
         return Flux.fromIterable(pricesRepository.findByBrandIdAndProductId(brandId, productId))
                 .map(PriceEntityBuilder::buildFrom)
-                //TODO: Are ranges closed or opened? if closed used isEqual in filter also
-                .filter(e -> e.getStartDate().isBefore(time.toInstant(ZoneOffset.UTC)))
-                .filter(e -> e.getEndDate().isAfter(time.toInstant(ZoneOffset.UTC)))
+                //TODO: Are ranges closed or opened? if closed add  isEqual in filter
+                .filter(e -> e.getStartDate().isBefore(time))
+                .filter(e -> e.getEndDate().isAfter(time))
                 .sort(Comparator.comparing(Price::getPriority).reversed())
                 .take(1)
                 .singleOrEmpty();
