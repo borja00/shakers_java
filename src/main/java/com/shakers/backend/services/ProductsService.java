@@ -1,11 +1,9 @@
 package com.shakers.backend.services;
 
 
-import com.shakers.backend.exceptions.ResourceNotFoundException;
+import com.shakers.backend.model.Price;
 import com.shakers.backend.repository.PricesRepository;
 import com.shakers.backend.repository.model.builder.PriceEntityBuilder;
-import com.shakers.backend.model.Price;
-
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +11,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.Comparator;
 
 @Service

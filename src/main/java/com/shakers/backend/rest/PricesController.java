@@ -22,7 +22,7 @@ public class PricesController {
     }
 
     @GetMapping("brands/{brandId}/products/{productId}")
-    private Mono<PriceDTO> getEmployeeById(
+    private Mono<PriceDTO> getProductPrice(
             @PathVariable Integer brandId,
             @PathVariable Integer productId,
             @RequestParam(value = "date", required = false) LocalDate date,

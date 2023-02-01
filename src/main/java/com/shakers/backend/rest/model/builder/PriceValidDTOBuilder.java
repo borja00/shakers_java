@@ -1,11 +1,7 @@
 package com.shakers.backend.rest.model.builder;
 
 import com.shakers.backend.model.Price;
-import com.shakers.backend.rest.model.MoneyDTO;
 import com.shakers.backend.rest.model.PriceValidDTO;
-import org.javamoney.moneta.Money;
-
-import java.math.RoundingMode;
 
 public class PriceValidDTOBuilder {
 

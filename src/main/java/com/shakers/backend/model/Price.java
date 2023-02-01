@@ -8,7 +8,6 @@ import java.time.Instant;
 
 @Builder
 @Data
-
 public class Price {
 
     Integer brandId;

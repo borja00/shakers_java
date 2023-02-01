@@ -3,9 +3,6 @@ package com.shakers.backend.rest.model;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-
 @Builder
 @Data
 
