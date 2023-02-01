@@ -63,7 +63,12 @@ public class TestPricesController {
     void should_fail_when_no_product(Integer brandId, Integer productId) {
 
         webClient.get()
-                .uri("/brands/" + brandId + "/products/"+ productId + "?date=2020-06-14&time=11:00")
+                .uri(uriBuilder -> uriBuilder
+                        .pathSegment("brands", brandId.toString(), "products", productId.toString())
+                        .queryParam("date", "2020-06-14")
+                        .queryParam("time", "11:00")
+                        .build()
+                )
                 .exchange()
                 .expectStatus().isNotFound();
     }
