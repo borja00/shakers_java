@@ -31,6 +31,15 @@ public class ProductsService {
                 .filter(e -> e.getStartDate().isBefore(time))
                 .filter(e -> e.getEndDate().isAfter(time))
                 .sort(Comparator.comparing(Price::getPriority).reversed())
+                //TODO: Decide what to do if two prices share the same priority
+                // Options: take smaller price
+                //          take bigger price
+                //          take price with bigger duration(endDate - startDate)
+                //          take price with smaller duration(endDate - startDate)
+                //          take price with latest endDate
+                //          take price with earliest endDate
+                //          take price with latest startDate
+                //          take price with earliest startDate
                 .take(1)
                 .singleOrEmpty();
 
